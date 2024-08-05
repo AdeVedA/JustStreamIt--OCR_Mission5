@@ -28,17 +28,27 @@ async function getFilmsCategory(category) {
     }
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    // sélectionnez la liste déroulante du genre
-    const genreChoixDeroulant = document.getElementById('AutresGenres');    
-    // écouter l'événement de changement dans la liste déroulante
-    if (genreChoixDeroulant) {
-        genreChoixDeroulant.addEventListener('change', function() {
-        const monGenre = genreChoixDeroulant.value;
-        // appelle la fonction pour obtenir des films par la catégorie sélectionnée
-        getFilmsCategory(monGenre);
+    // Sélectionnez toutes les listes déroulantes des genres
+    const genreChoixDeroulant = document.querySelectorAll('#AutresGenres');
+    
+    // Écouter l'événement de changement pour chaque liste déroulante
+    genreChoixDeroulant.forEach(select => {
+        select.addEventListener('change', function(event) {
+            const monGenre = event.target.value;
+            const section = event.target.closest('section, section2');
+            const mesDivs = section.querySelectorAll('[id^=movie]');
+            // console.log(mesDivs)
+            // Mettre à jour les ids des divs
+            mesDivs.forEach((div, index) => {
+                div.id = `movie${monGenre}`;
+            });
+
+            // Appelle la fonction pour obtenir des films par la catégorie sélectionnée
+            getFilmsCategory(monGenre);
+        });
     });
-    }
 });
 
 // récupérer les noms des genres de film (marge d'extensibilité jusqu'à 1000 genres)
@@ -50,8 +60,9 @@ async function getGenres() {
         const data = await response.json();
         const genresList = data.results.map(genre => genre.name);
         const selectElements = document.querySelectorAll("select");
-
+        // pour les 2 balises <select> de sélection de genre cinematographique
         selectElements.forEach(select => {
+            // pour chaque genre dans la liste de genres, on crée une option pour ce genre
             genresList.forEach(genre => {
                 const option = document.createElement("option");
                 option.value = genre;
