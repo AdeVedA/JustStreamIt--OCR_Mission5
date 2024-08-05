@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>JustStreamIt</title>
+    <link rel="icon" href="images/logo.jpg">
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="scripts/modal.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="conteneur">
+            <a href="index.html">
+                <img src="images/JustStreamIt.png" alt="Logo JustStreamIt" height="124"> 
+            </a>
+            <strong> Vidéos à la demande </strong>
+        </div>
+    </header>
+
+    <main>
+        <h2> Meilleur Film </h2>
+        <div class="film-encart">
+            <p>Chargement en cours...</p>
+            <img src="" alt="affiche du meilleur film (n°1 au score imdb)" class="affiche" id="image-film">
+            <div class="film-infos">
+                <h2 id="titre-film"></h2>
+                <p id="description-film"></p>
+                <button id="bouton-details" class="redbox modal-trigger" data-id="0"> Détails </button>
+            </div>
+        </div>
+
+        <h2> Meilleurs Films </h2>
+        <div class="bloc6">
+            <div id="movie" class="film-cover">
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                    <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movie">
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movie">
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movie">
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movie">
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movie">
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>
+    
+        <h2> Mystery </h2>
+        <div class="bloc6">
+            <div id="movieMystery">
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieMystery">
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieMystery">
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieMystery">
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieMystery">
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieMystery">
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>
+    
+        <h2> Adventure </h2>
+        <div class="bloc6">
+            <div id="movieAdventure">
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieAdventure">
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieAdventure">
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieAdventure">
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieAdventure">
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieAdventure">
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>
+    
+        <h2> Fantasy </h2>
+        <div class="bloc6">
+            <div id="movieFantasy">
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieFantasy">
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieFantasy">
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieFantasy">
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieFantasy">
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div id="movieFantasy">
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>    
+        
+        <div class="bloc6">
+            <form method="get" action="">
+                    <label for="AutresGenres"><h2> Autres : </h2></label>
+                    <select name="AutresGenres" id="AutresGenres">
+                    </select>
+            </form>
+            <div>
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bloc6">
+            <form method="get" action="">
+                    <label for="AutresGenres"><h2> Autres : </h2></label>
+                    <select name="AutresGenres" id="AutresGenres">
+                    </select>
+            </form>
+            <div>
+                <img id="film_1" src="images/waiter.webp" alt="affiche de film1" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_2" src="images/waiter.webp" alt="affiche de film2" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_3" src="images/waiter.webp" alt="affiche de film3" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_4" src="images/waiter.webp" alt="affiche de film4" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_5" src="images/waiter.webp" alt="affiche de film5" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+            <div>
+                <img id="film_6" src="images/waiter.webp" alt="affiche de film6" class="vignette-film" width="252" height="247">
+                <div class="bandover">
+                    <h3 class="title">Film Title</h3>
+                    <button id="bouton-details" class="modal-trigger" data-id=0>Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+<!-- fenêtre modale -->
+<div id="fenetre-modale" class="modal-container">
+    <div class="overlay modal-trigger"></div>
+    <div class="modal">
+        <div class="modal-header">
+            <div class="details-films">
+                <h2 id="film-titre">Titre du film</h2>
+                <p id="année-genres">année - genres</p>
+                <p id="pg-duree-origine">âge minimal recommandé - durée - pays d'origine</p>
+                <p id="revenu-brut">revenu brut mondial</p>
+                <p id="imdb-score">score IMDB</p>
+                <p id="real">Réalisé par :</p>
+                <p id="realisateurs">Ses réalisateurs</p>
+            </div>
+            <div class="image">
+                <img src="images/no_cover.png" alt="affiche du film" class="affiche" id="modal-image-film">
+            </div>
+        </div>
+        <p class="synopsis" id="modal-desc">synopsis/description</p>
+        <p id="avec">Avec : </p>
+        <p id="casting">actrices & acteurs</p>
+        <button class="fermer-modal modal-trigger">Fermer</button>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+
