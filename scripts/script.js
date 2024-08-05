@@ -28,29 +28,18 @@ async function getFilmsCategory(category) {
     }
 }
 
-// document.addEventListener('DOMContentLoaded', function(event){
-//     const btn = document.getElementById("bouton-details");
-//     const modalTriggers = document.querySelectorAll(".modal-trigger");
-//     if (btn) {
-//         btn.addEventListener('click', function(){
-//             modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
-//         });
-//     }
-// });
-// document.addEventListener('click', function(event) {
-//     const modalTriggers = document.querySelectorAll(".modal-trigger");
-//     const boutonDetails = event.target
-//     let idFilm = boutonDetails.dataset.id
-//     const monFilm = getFilmDetails(idFilm)
-//     if (boutonDetails) {
-//         boutonDetails.addEventListener('click', function(){
-//             modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
-//         });
-//     }
-//     // mamodal = document.querySelector(#modal)
-//     // mamodal.querySelector(".titre").innerHtml = monfilm.titre
-//     // mamodal.classList.add("active")
-// })
+document.addEventListener('DOMContentLoaded', function() {
+    // sélectionnez la liste déroulante du genre
+    const genreChoixDeroulant = document.getElementById('AutresGenres');    
+    // écouter l'événement de changement dans la liste déroulante
+    if (genreChoixDeroulant) {
+        genreChoixDeroulant.addEventListener('change', function() {
+        const monGenre = genreChoixDeroulant.value;
+        // appelle la fonction pour obtenir des films par la catégorie sélectionnée
+        getFilmsCategory(monGenre);
+    });
+    }
+});
 
 // récupérer les noms des genres de film (marge d'extensibilité jusqu'à 1000 genres)
 // et insérer les genres de film dans les listes déroulantes pour les 2 blocs à formulaire

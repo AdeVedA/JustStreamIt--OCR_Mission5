@@ -81,7 +81,6 @@ h2 {
 .bloc6 form {
   width: 70%;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
 }
 
@@ -89,7 +88,11 @@ form {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+form span {
+  max-width: 200px;
 }
 
 label {
@@ -122,6 +125,10 @@ label {
   color: white;
   font-weight: bold;
   margin: 0px;
+  max-width: 200px; /* Adjust the width as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bandover button {
@@ -277,6 +284,16 @@ p#avec {
 #casting {
   font-weight: 300;
   font-size: 1.25em;
+}
+
+.bandover h3:hover {
+  overflow: hidden;
+  white-space: normal;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0px;
+  border-radius: 25px;
+  position: relative;
+  z-index: 1;
 }
 
 button:hover {

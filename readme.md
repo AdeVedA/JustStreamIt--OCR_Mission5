@@ -44,6 +44,7 @@ dans le terminal (l'invite de commande) qui indique bien que vous êtes à l'adr
 
 	double-cliquez sur index.html
 
+
 -------------------------
 -------------------------
 

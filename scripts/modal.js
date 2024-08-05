@@ -1,12 +1,22 @@
 
+// document.addEventListener('DOMContentLoaded', function(){
+//     const btn = document.getElementById("bouton-details");
+//     const modalTriggers = document.querySelectorAll(".modal-trigger");
+//     if (btn) {
+//         btn.addEventListener('click', function(){
+//             modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
+//         });
+//     }
+// });
+
 document.addEventListener('DOMContentLoaded', function(){
-    const btn = document.getElementById("bouton-details");
-    const modalTriggers = document.querySelectorAll(".modal-trigger");
-    if (btn) {
-        btn.addEventListener('click', function(){
-            modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
-        });
-    }
+    document.body.addEventListener('click', function(event){
+        if (event.target.classList.contains('modal-trigger')) {
+            const idFilm = event.target.dataset.id;
+            getFilmDetails(idFilm);
+            toggleModal();
+        }
+    });
 });
 
 function toggleModal(){
