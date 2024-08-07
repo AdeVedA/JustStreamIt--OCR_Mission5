@@ -1,4 +1,4 @@
-
+// écoute d'évènement "click" sur le bouton "détails" du bandeau translucide
 document.addEventListener('DOMContentLoaded', function(){
     document.body.addEventListener('click', function(event){
         if (event.target.classList.contains('modal-trigger')) {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 });
-
+//fonction switch pour afficher/cacher la fenêtre modale
 function toggleModal(){
     const modal = document.getElementById("fenetre-modale");
     if (modal) {
@@ -25,7 +25,7 @@ function toggleModal(){
 // et les charge dans la fenêtre modale du film
 async function getFilmDetails(idFilm) {
     const id = await idFilm;
-    const url = `http://localhost:8000/api/v1/titles/${id}`;
+    const urlFilm = `http://localhost:8000/api/v1/titles/${id}`;
     const titreFilm = document.getElementById('film-titre')
     const anneeGenresFilm = document.getElementById('année-genres')
     const pgDureeFilm = document.getElementById('pg-duree-origine')
@@ -36,7 +36,7 @@ async function getFilmDetails(idFilm) {
     const synopsis = document.getElementById('modal-desc')
     const casting = document.getElementById('casting')
     try {
-        const response = await fetch(url);
+        const response = await fetch(urlFilm);
         const data = await response.json();
         // mettre à jour la fenêtre modale avec les infos du film
         titreFilm.textContent = data.title;

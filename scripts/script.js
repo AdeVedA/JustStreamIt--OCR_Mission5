@@ -2,7 +2,7 @@ const url = "http://localhost:8000/api/v1/titles"
 
 async function getFilmsCategory(category) {
     const box6Uri = "?page_size=6&sort_by=-imdb_score&genre="
-    const listDivs = document.querySelectorAll(`#movie${category}`);
+    const listDivs = document.querySelectorAll(`.movie${category}`);
     // definir l'endpoint de l'API pour trouver les 6 meilleurs films
     // la categorie donnée en argument
     const urlCategory = `${url}${box6Uri}${category}`;
@@ -28,21 +28,27 @@ async function getFilmsCategory(category) {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
     // Sélectionnez toutes les listes déroulantes des genres
-    const genreChoixDeroulant = document.querySelectorAll('#AutresGenres');
+    const genreChoixDeroulant = document.querySelectorAll('.AutresGenres');
     
     // Écouter l'événement de changement pour chaque liste déroulante
     genreChoixDeroulant.forEach(select => {
         select.addEventListener('change', function(event) {
             const monGenre = event.target.value;
             const section = event.target.closest('section, section2');
-            const mesDivs = section.querySelectorAll('[id^=movie]');
+            const mesDivs = section.querySelectorAll('[class*=movie]');
             // console.log(mesDivs)
             // Mettre à jour les ids des divs
-            mesDivs.forEach((div, index) => {
-                div.id = `movie${monGenre}`;
+            mesDivs.forEach((div) => {
+                // Supprimer la classe movie* existante
+                div.classList.forEach(className => {
+                    if (className.startsWith('movie')) {
+                        div.classList.remove(className);
+                    }
+                });
+                // Ajouter la nouvelle classe
+                div.classList.add(`movie${monGenre}`);
             });
 
             // Appelle la fonction pour obtenir des films par la catégorie sélectionnée
@@ -76,7 +82,6 @@ async function getGenres() {
     }
 }
 
-
 //fonction pour récupérer le meilleur film (image et titre et id)
 async function getBestFilm() {
     const imageFilm = document.getElementById('image-film');
@@ -85,7 +90,7 @@ async function getBestFilm() {
     // definir l'endpoint de l'API pour trouver le film au meilleur score imdb
     const url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
     // récupérer les infos de l'API
-    let idFilm = null;
+    // let idFilm = null;
     try {
         // récupérer les infos du film le mieux noté
         const response = await fetch(url);
@@ -94,9 +99,8 @@ async function getBestFilm() {
         // mettre à jour l'UI avec les infos du film
         imageFilm.src = topFilm.image_url;
         titreFilm.textContent = topFilm.title;
-        //récupérer de l'url du film la description
+        // récupérer de l'url du film la description
         document.querySelector(".film-infos button").dataset.id = topFilm.id
-        // idFilm = topFilm.id;
         const urlTopFilmDetails = topFilm.url
         try {
             const response = await fetch(urlTopFilmDetails)
@@ -110,6 +114,40 @@ async function getBestFilm() {
     }
     // cacher le message initial de "chargement en cours"
     document.querySelector('.film-encart p').style.display = 'none';
-    return idFilm
 }
 
+// boutons "Voir plus"
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.addEventListener("click", function(event) {
+        if (event.target.classList.contains("voirplus")) {
+            let button = event.target;
+            let parent = button.closest('.bloc6');
+            let smallItems = parent.querySelectorAll('.small');
+            let mediumItems = parent.querySelectorAll('.medium');
+            smallItems.forEach(function(item) {
+                item.style.display = 'flex';
+            });
+            mediumItems.forEach(function(item) {
+                item.style.display = 'flex';
+            });
+            button.textContent = " Voir moins ";
+            button.classList.remove("voirplus");
+            button.classList.add("voirmoins");
+            //et dans l'autre sens... "Voir moins"
+        } else if (event.target.classList.contains("voirmoins")) {
+            let button = event.target;
+            let parent = button.closest('.bloc6');
+            let smallItems = parent.querySelectorAll('.small');
+            let mediumItems = parent.querySelectorAll('.medium');
+            smallItems.forEach(function(item) {
+                item.style.display = 'none';
+            });
+            mediumItems.forEach(function(item) {
+                item.style.display = 'none';
+            });
+            button.textContent = " Voir plus ";
+            button.classList.remove("voirmoins");
+            button.classList.add("voirplus");
+        }
+    });
+});
