@@ -1,5 +1,39 @@
 const url = "http://localhost:8000/api/v1/titles"
 
+//fonction pour récupérer le meilleur film (image et titre et id)
+async function getBestFilm() {
+    const imageFilm = document.getElementById('image-film');
+    const titreFilm = document.getElementById('titre-film');
+    const descriptionFilm = document.getElementById('description-film');
+    // definir l'endpoint de l'API pour trouver le film au meilleur score imdb
+    const url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
+    // récupérer les infos de l'API
+    // let idFilm = null;
+    try {
+        // récupérer les infos du film le mieux noté
+        const response = await fetch(url);
+        const data = await response.json();
+        const topFilm = data.results[0];
+        // mettre à jour l'UI avec les infos du film
+        imageFilm.src = topFilm.image_url;
+        titreFilm.textContent = topFilm.title;
+        // récupérer de l'url du film la description
+        document.querySelector(".film-infos button").dataset.id = topFilm.id
+        const urlTopFilmDetails = topFilm.url
+        try {
+            const response = await fetch(urlTopFilmDetails)
+            const data = await response.json();
+            descriptionFilm.textContent = data.description;
+        } catch (error) {
+            console.error("Erreur en voulant récupérer la description du film:", error);
+        }
+    } catch (error) {
+        console.error("Erreur en voulant récupérer le film:", error);
+    }
+    // cacher le message initial de "chargement en cours"
+    document.querySelector('.film-encart p').style.display = 'none';
+}
+
 async function getFilmsCategory(category) {
     const box6Uri = "?page_size=6&sort_by=-imdb_score&genre="
     const listDivs = document.querySelectorAll(`.movie${category}`);
@@ -80,40 +114,6 @@ async function getGenres() {
     } catch (error) {
         console.error("Erreur en voulant récupérer la liste de genres:", error);
     }
-}
-
-//fonction pour récupérer le meilleur film (image et titre et id)
-async function getBestFilm() {
-    const imageFilm = document.getElementById('image-film');
-    const titreFilm = document.getElementById('titre-film');
-    const descriptionFilm = document.getElementById('description-film');
-    // definir l'endpoint de l'API pour trouver le film au meilleur score imdb
-    const url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
-    // récupérer les infos de l'API
-    // let idFilm = null;
-    try {
-        // récupérer les infos du film le mieux noté
-        const response = await fetch(url);
-        const data = await response.json();
-        const topFilm = data.results[0];
-        // mettre à jour l'UI avec les infos du film
-        imageFilm.src = topFilm.image_url;
-        titreFilm.textContent = topFilm.title;
-        // récupérer de l'url du film la description
-        document.querySelector(".film-infos button").dataset.id = topFilm.id
-        const urlTopFilmDetails = topFilm.url
-        try {
-            const response = await fetch(urlTopFilmDetails)
-            const data = await response.json();
-            descriptionFilm.textContent = data.description;
-        } catch (error) {
-            console.error("Erreur en voulant récupérer la description du film:", error);
-        }
-    } catch (error) {
-        console.error("Erreur en voulant récupérer le film:", error);
-    }
-    // cacher le message initial de "chargement en cours"
-    document.querySelector('.film-encart p').style.display = 'none';
 }
 
 // boutons "Voir plus"

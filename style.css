@@ -53,6 +53,7 @@ h2 {
 }
 
 .affiche {
+  width: 30%;
   padding: 1% 1.2% 1% 1.2%;
 }
 
@@ -60,13 +61,14 @@ h2 {
   display: flex;
   flex-direction: column;
   padding: 0.1% 0.1% 0.1% 2%;
-  width: 70%
+  width: 64%;
+  height: 100%;
 }
 
 .film-infos h2 {
   margin-top: 0.5%;
   margin-bottom: 0.5%; 
-  width: 80%;
+  width: 90%;
 }
 
 p {
@@ -76,14 +78,15 @@ p {
 }
 
 .redbox {
-  align-self:flex-end;
-  order:2;
-  margin-left: 60%;
+  align-items: end;
+  align-self: flex-end;
+  /* order:2; */
+  /* margin-left: 60%; */
   margin-bottom: 2%;
   background: red;
   color: white;
   width: 15%;
-  height: 20%;
+  height: 10%;
   border: none; 
   border-radius: 25px;
   padding: 0.8% 2% 1% 2%;
@@ -271,7 +274,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 70%;
+  max-width: 80%;
   min-width: 50%;
   padding: 1% 1% 1% 1%;
   background: #ffffff;
@@ -296,7 +299,7 @@ label {
   display: flex;
   flex-direction: column;
   width: 60%;
-  padding: 0 10% 1% 0;
+  padding: 0 2% 1% 0;
 }
 
 #film-titre {
@@ -331,15 +334,17 @@ label {
 }
 
 .image {
-  display:flex;
-  /* justify-content: space-between; */
-  /* align-items: flex-end;
-  width: 100%; */
-  flex-grow: 1;
+  width: 30%;
+  height: auto;
+  display: flex;
 }
 
 #modal-image-film {
+  /* justify-items: stretch; */
+  width: inherit;
+  height: inherit;
   padding: 1% 1% 1% 1%;
+  flex-grow: 2;
 }
 
 p#modal-desc {
@@ -411,9 +416,15 @@ button:hover {
   strong {
     display: none;
   }
+
+  .affiche {
+    width: 100%;
+  }
+
   .film-infos {
     width: 100%;
   }
+
   .film-infos h2 {
     width: 100%;
   }
@@ -475,6 +486,9 @@ button:hover {
     border: 3px solid #000000;
   }
 
+  .image {
+    width: 100%;
+  }
   .details-films {
     width: 90%;
     padding: 0 0% 1% 0;
@@ -493,15 +507,24 @@ button:hover {
     max-width: 992px
   }
 
+  .conteneur {
+    justify-content: center;
+    align-items: center;
+  }
+
   a {
     padding: 0% 2% 0% 2%;
+  }
+
+  .affiche {
+    width: 28%;
   }
 
   .film-infos {
     width: 66%;
   }
   .film-infos h2 {
-    width: 70%;
+    width: 100%;
   }
 
   .redbox {
@@ -551,11 +574,32 @@ button:hover {
     right:0%;
     bottom: 0%;
     left: 0%;
-    border: 6px solid #000000;
+  }
+
+  .modal-header {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin: 0% 0% 3% 0%  ;
+  }
+
+  .image {
+    order: 2;
+    width: 100%;
+    height: auto;
+  }
+
+  #modal-image-film {
+    width: 70%;
+    height: auto;
+    padding: 1% 1% 1% 1%;
+    flex-grow: 0;
   }
 
   .details-films {
-    width: 70%;
+    width: 90%;
     padding: 0 6% 1% 0;
   }
 
@@ -564,4 +608,35 @@ button:hover {
     font-weight: 500;
     overflow: auto;
   }
+
+  /* dsqfgmjhnm */
+
+  #film-titre {
+    text-align: top;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .details-films p {
+    margin-top : 1%;
+    margin-bottom : 1%;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  #imdb-score {
+    margin-bottom: 40px;
+  }
+
+  .details-films p#real {
+    font-weight: 400;
+  }
+
+  #realisateurs {
+    font-weight: 300;
+  }
+
 }
