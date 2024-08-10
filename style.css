@@ -17,7 +17,6 @@ header {
 
 a {
   color: #242424;
-  /* text-decoration: none; */
   padding: 0.5% 4% 0% 2%;
 }
 
@@ -28,9 +27,6 @@ strong {
   padding: 1% 1% 1% 4%;
 }
 
-/* main {
-  margin: auto;
-} */
 
 h2 {
   display: flex;
@@ -80,23 +76,19 @@ p {
 .bouton-details-container {
   flex-grow: 1; /* On demande a la div de prendre tout l'espace restant */
   display: flex; /* on transforme la div en flexbox pour faciliter les alignements */
-  justify-content: end; 
+  justify-content: end; /* on justifie à droite */
 }
 
 .redbox {
   align-items: end;
   align-self: flex-end;
-  /* order:2; */
-  /* margin-left: 60%; */
   margin-bottom: 2%;
   background: red;
   color: white;
   width: 15%;
-  /* height: 10%; */
   border: none; 
   border-radius: 25px;
   padding: 0.8% 2% 1% 2%;
-  /* display: block; */
   font-family: "Oswald", sans-serif;
   font-size: 1.5em;
   font-weight: 500;
@@ -120,7 +112,6 @@ p {
   position: relative;
   display:flex;
   width: 32%;
-  /* box-sizing: border-box; */
   padding: 0.4% 0.2% 1% 0.2%;
 }
 
@@ -140,9 +131,7 @@ p {
   top: 20%;
   left: auto;
   right: auto;
-  /* height: 20%; */
   padding: 1% 2% 2% 2%;
-  /* background-color: rgba(128, 128, 128, 0.9); */
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
 }
@@ -243,6 +232,10 @@ label {
   cursor: pointer;
 }
 
+.fixed-body-scroll {
+  overflow: hidden;
+}
+
 .modal-container {
   display: flex;
   justify-content: center;
@@ -280,15 +273,14 @@ label {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 80%;
+  max-width: 70%;
   min-width: 50%;
+  margin: auto;
   padding: 1% 1% 1% 1%;
   background: #ffffff;
   border-radius: 1px;
   position: relative;
-  /* top: 50%; */
-  /* left: 49.5%; */
-  /* transform: translate(-50%,-50%); */
+  /* top: 3%; */
   border: 6px solid #000000;
 }
 
@@ -386,16 +378,14 @@ p#avec {
 
 .fermer-modal-SM {
   display: none;
-  /* justify-items: right; */
   position: absolute;
   top: 0;
   right: 0;
-  /* width: 25%; */
   border: none;
   border-radius: 25px;
   font-family: "Oswald", sans-serif;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 2.5em;
   padding: auto;
   cursor: pointer;
   background : #ffffff;
@@ -493,9 +483,7 @@ button:hover {
   }
 
   form h2 {
-    /* display: flex; */
     width: 40%;
-    /* font-weight: 600; */
     font-size: 2.5em;
     margin-top: 0%;
     margin-bottom: 0%;
@@ -515,7 +503,7 @@ button:hover {
     margin:auto;
     top: 0;
     left: 0;
-    border: 3px solid #000000;
+    border: 2px solid #000000;
   }
 
   .fermer-modal-SM {
@@ -538,6 +526,7 @@ button:hover {
     font-size: 2.5em;
     font-weight: 500;
     overflow: auto;
+    white-space: normal;
   }
   
   .display-none {
@@ -618,6 +607,7 @@ button:hover {
     right:0%;
     bottom: 0%;
     left: 0%;
+    border: 4px solid #000000;
   }
 
   .modal-header {
@@ -638,13 +628,13 @@ button:hover {
   }
 
   .image {
-    order: 2;
+    /* order: 2; */
     width: 100%;
     height: auto;
   }
 
   #modal-image-film {
-    width: 70%;
+    width: 100%;
     height: auto;
     padding: 1% 1% 1% 1%;
     flex-grow: 0;
@@ -659,37 +649,9 @@ button:hover {
     font-size: 2.5em;
     font-weight: 500;
     overflow: auto;
+    white-space: normal;
   }
 
-  /* dsqfgmjhnm */
-
-  #film-titre {
-    text-align: top;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
-    margin-top: 0;
-  }
-
-  .details-films p {
-    margin-top : 1%;
-    margin-bottom : 1%;
-    font-size: 1.5em;
-    font-weight: 600;
-    text-align: left;
-  }
-
-  #imdb-score {
-    margin-bottom: 40px;
-  }
-
-  .details-films p#real {
-    font-weight: 400;
-  }
-
-  #realisateurs {
-    font-weight: 300;
-  }
   .display-none {
     display: none;
   }

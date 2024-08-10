@@ -13,11 +13,14 @@ document.addEventListener('DOMContentLoaded', function(){
 //fonction switch pour afficher/cacher la fenêtre modale
 function toggleModal(){
     const modal = document.getElementById("fenetre-modale");
+    const body = document.querySelector("body")
     if (modal) {
         if (modal.classList.contains("active")) {
             modal.classList.remove("active");
+            body.classList.remove("fixed-body-scroll")
         } else {
         modal.classList.add("active");
+        body.classList.add("fixed-body-scroll")
         }
     }    
 }
@@ -51,7 +54,11 @@ async function getFilmDetails(idFilm) {
         }
         imdbScoreFilm.textContent = 'IMDB score: '+ data.imdb_score +" / 10";
         realFilm.textContent = data.directors;
-        coverFilm.src = data.image_url;
+        if (data.image_url === null) {
+            coverFilm.src = "images/no_cover.png"
+        } else {
+            coverFilm.src = data.image_url;
+        }
         synopsis.textContent = data.long_description;
         casting.textContent = data.actors;
         //récupérer de l'url du film la description
