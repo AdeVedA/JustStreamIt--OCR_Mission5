@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <script src="scripts/modal.js" defer></script>
-    <script src="scripts/script.js" defer></script>
     <script src="scripts/main.js" defer></script>
 </head>
 
@@ -33,7 +32,9 @@
             <div class="film-infos">
                 <h2 id="titre-film"></h2>
                 <p id="description-film"></p>
-                <button class="redbox bouton-details modal-trigger" data-id="0"> Détails </button>
+                <div class="bouton-details-container">
+                    <button class="redbox bouton-details modal-trigger" data-id="0"> Détails </button>
+                </div>
             </div>
         </div>
 
@@ -338,6 +339,7 @@
     <div class="modal">
         <div class="modal-header">
             <div class="details-films">
+                <button class="fermer-modal-SM modal-trigger">X</button>
                 <h2 id="film-titre">Titre du film</h2>
                 <p id="année-genres">année - genres</p>
                 <p id="pg-duree-origine">âge minimal recommandé - durée - pays d'origine</p>
@@ -349,8 +351,8 @@
             <div class="image">
                 <img src="images/no_cover.png" alt="affiche du film" class="affiche" id="modal-image-film">
             </div>
-        </div>
         <p class="synopsis" id="modal-desc">synopsis/description</p>
+        </div>
         <p id="avec">Avec : </p>
         <p id="casting">actrices & acteurs</p>
         <button class="fermer-modal modal-trigger">Fermer</button>

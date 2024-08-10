@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.addEventListener('click', function(event){
         if (event.target.classList.contains('modal-trigger')) {
             const idFilm = event.target.dataset.id;
-            getFilmDetails(idFilm);
+            if(idFilm !== undefined){
+                getFilmDetails(idFilm);
+            }
             toggleModal();
         }
     });
