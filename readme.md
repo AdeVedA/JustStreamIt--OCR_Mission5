@@ -16,7 +16,7 @@
 Cette application Web permet aux abonnés de JustStreamIt de visualiser en temps réel un catalogue de films.
 Ces films, classés par genres et score IMDB, sont agréablement représentés par leurs affiches et, en cliquant dessus, de nombreuses informations sont consultables via une fenêtre modale : synopsis, réalisateurs, acteurs, année, genres, pays d'origine, durée, score IMDB, âge recommandé...
 Toutes ces informations proviennent de requêtes à une API ([OCMovies-API](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR)).
-
+le design est responsive (mobile, tablette et desktop), un bouton "voir plus"/"voir moins" est affiché dans le cas où le nombre de films de la catégorie choisie est supérieur au nombre d'affiches présentées pour la résolution donnée. on peut même redimensionner la page à la souris et les boutons s'actualisent.
 Elle est la première application WEB que je développe, ce sont mes premiers pas en html, css et javascript. 
 
 ------------------------------------------

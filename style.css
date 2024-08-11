@@ -395,7 +395,7 @@ p#avec {
 }
 
 .display-none {
-  display: none;
+  display: none !important;
 }
 
 .bandover h3:hover {
@@ -530,7 +530,7 @@ button:hover {
   }
   
   .display-none {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -653,6 +653,6 @@ button:hover {
   }
 
   .display-none {
-    display: none;
+    display: none !important;
   }
 }

@@ -57,7 +57,6 @@ async function getFilmsCategory(category) {
         let data = await response.json();
         let listFilms = data.results;
         // mettre à jour l'UI avec les infos du film
-        let maDiv;
         for(let i = 0; i < 6; i++) {
             let monFilm = listFilms[i]
             maDiv = listDivs[i]
@@ -73,31 +72,44 @@ async function getFilmsCategory(category) {
                 maDiv.classList.add("display-none")
             }
         }
-        if (listFilms.length < 4) {
-            showVoirPlusOrNot(maDiv)
-            window.addEventListener('resize', function() {
-                showVoirPlusOrNot(maDiv)
-            })
+        if (listFilms.length <= 4) {
+            let maSection = listDivs[0].closest('section')
+            showVoirPlusOrNot(maSection);
         }
     } catch (error) {
         console.error("Erreur en voulant récupérer le film:", error);
     }
 }
 
+window.addEventListener('resize', function() {
+    let mesBlocs6 = document.querySelectorAll('section > div.bloc6')
+    mesBlocs6.forEach((monBloc) => {
+        let mesFilms = monBloc.querySelectorAll('[class*="movie"]:not(.display-none)');
+        if (mesFilms.length <= 4) {
+            let maSection = monBloc.closest('section')
+            showVoirPlusOrNot(maSection)
+        }
+    })
+})
+
 // cacher le bouton voir+/voir- 
-// quand le nombre de film est <= aux nombre d'affiches
-// donc en fonction de la taille d'affichage
-function showVoirPlusOrNot(maDiv) {
-    let parent = maDiv.closest('.bloc6');
-    let monBouton = parent.querySelector('button[class*=voir]');
-    let mesFilms = parent.querySelectorAll('[class*=movie]:not(.display-none)');
+// quand le nombre de films récupérés est <= au nombre d'affiches 
+// proposées en fonction de la taille d'affichage
+function showVoirPlusOrNot(maSection) {
+    let maDiv = maSection.querySelector('.bloc6');
+    let monBouton = maDiv.querySelector('button[class*=voir]');
+    let mesFilms = maDiv.querySelectorAll('div[class*="movie"]:not(.display-none)');
     if (window.innerWidth <= 600) {
         if (mesFilms.length <= 2) {
-            monBouton.classList.add('display-none')
+            monBouton.classList.add("display-none")
+        } else {
+            monBouton.classList.remove("display-none")
         }
     } else if (window.innerWidth >= 601 && window.innerWidth <= 992) {
         if (mesFilms.length <= 4) {
-            monBouton.classList.add('display-none')
+            monBouton.classList.add("display-none")
+        } else {
+            monBouton.classList.remove("display-none")
         }
     }
 }
@@ -110,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     genreChoixDeroulant.forEach(select => {
         select.addEventListener('change', function(event) {
             const monGenre = event.target.value;
-            const section = event.target.closest('section, section2');
+            const section = event.target.closest('section');
             const mesDivs = section.querySelectorAll('[class*=movie]');
             // Mettre à jour les ids des divs
             mesDivs.forEach((div) => {
@@ -123,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ajouter la nouvelle classe
                 div.classList.add(`movie${monGenre}`);
             });
-
             // Appelle la fonction pour obtenir des films par la catégorie sélectionnée
             getFilmsCategory(monGenre);
         });
