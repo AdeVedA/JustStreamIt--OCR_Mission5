@@ -60,6 +60,7 @@ async function getFilmsCategory(category) {
         for(let i = 0; i < 6; i++) {
             let monFilm = listFilms[i]
             maDiv = listDivs[i]
+            // si le film "existe"
             if(monFilm !== undefined){
                 maDiv.classList.remove("display-none")
                 maDiv.querySelector("img").onerror = function() {
@@ -69,9 +70,12 @@ async function getFilmsCategory(category) {
                 maDiv.querySelector(".title").textContent = monFilm.title
                 maDiv.querySelector("button").dataset.id = monFilm.id
             } else {
+                //sinon, on le cache
                 maDiv.classList.add("display-none")
             }
         }
+        // si la réponse fetch offre 4 films ou moins,
+        // on appelle la fonction gérant l'affichage des boutons "voir plus"/"voir moins"
         if (listFilms.length <= 4) {
             let maSection = listDivs[0].closest('section')
             showVoirPlusOrNot(maSection);
@@ -81,6 +85,8 @@ async function getFilmsCategory(category) {
     }
 }
 
+// écoute de l'évenement de "redimensionnement de la page" pour gérer
+// l'affichage des boutons "voir plus"/"voir moins"
 window.addEventListener('resize', function() {
     let mesBlocs6 = document.querySelectorAll('section > div.bloc6')
     mesBlocs6.forEach((monBloc) => {
@@ -114,9 +120,11 @@ function showVoirPlusOrNot(maSection) {
     }
 }
 
+// une fois la page chargée on va écouter les changements de sélection
+// des options de genres dans le menu déroulant
 document.addEventListener('DOMContentLoaded', function() {
     // Sélectionnez toutes les listes déroulantes des genres
-    const genreChoixDeroulant = document.querySelectorAll('.AutresGenres');
+    const genreChoixDeroulant = document.querySelectorAll('.autres-genres');
     
     // Écouter l'événement de changement pour chaque liste déroulante
     genreChoixDeroulant.forEach(select => {
@@ -195,4 +203,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-

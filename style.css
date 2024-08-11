@@ -58,7 +58,6 @@ h2 {
   flex-direction: column;
   padding: 0.1% 0.1% 0.1% 2%;
   width: 64%;
-  /* height: 100%; */
 }
 
 .film-infos h2 {
@@ -74,9 +73,9 @@ p {
 }
 
 .bouton-details-container {
-  flex-grow: 1; /* On demande a la div de prendre tout l'espace restant */
-  display: flex; /* on transforme la div en flexbox pour faciliter les alignements */
-  justify-content: end; /* on justifie à droite */
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
 }
 
 .redbox {
@@ -149,8 +148,6 @@ p {
 }
 
 .bandover button {
-  /* background-color: white; */
-  /* position: relative; */
   border: none;
   padding: 2% 2% 2% 2%;
   border-radius: 25px;
@@ -167,30 +164,15 @@ p {
   justify-content: flex-end;
 }
 
-/* .bloc6 form {
-  width: 70%;
-  display: flex;
-  justify-content: flex-start;
-} */
-
 form {
   display: flex;
   align-items: flex-start;
-  /* margin-bottom: 1%; */
   flex-direction: row;
   width: 100%
 }
 
-/* form span {
-  width: 30%;
-  margin: 0% 0 2% 3%;
-} */
-
 form h2{
-  /* display: flex; */
   width: 42%;
-  /* font-weight: 600; */
-  /* font-size: 3em; */
   margin-top: 0%;
   margin-bottom: 0%;
 }
@@ -202,8 +184,6 @@ form select {
   font-size: 3em;
   font-weight: 600;
   padding: 0;
-  /* width: 20%; */
-  /* height: 10%; */
 }
 
 label {
@@ -215,7 +195,6 @@ label {
   display: none;
   align-self: center;
   margin-left: 43%;
-  /* margin-bottom: 2%; */
   background: red;
   color: white;
   width: 15%;
@@ -226,8 +205,6 @@ label {
   font-family: "Oswald", sans-serif;
   font-size: 1.5em;
   font-weight: 500;
-  /* align-content: center; */
-  /* text-align: center; */
   min-width: 100px;
   cursor: pointer;
 }
@@ -247,10 +224,7 @@ label {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  /* z-index: 1; */
   overflow: auto;
-  /* background: rgb(231, 204, 204); */
-  /* color: black; */
 }
 
 .overlay {
@@ -264,7 +238,6 @@ label {
 }
 
 .modal-container.active {
-  /* display:block; */
   visibility: visible;
   transition : visibility 0s;
 }
@@ -280,7 +253,6 @@ label {
   background: #ffffff;
   border-radius: 1px;
   position: relative;
-  /* top: 3%; */
   border: 6px solid #000000;
 }
 
@@ -338,7 +310,6 @@ label {
 }
 
 #modal-image-film {
-  /* justify-items: stretch; */
   width: inherit;
   height: inherit;
   padding: 1% 1% 1% 1%;
@@ -421,8 +392,9 @@ button:hover {
 }
 
 /**/
-/* class: small */
+/*        class: small */
 /**/
+
 @media screen and (max-width: 600px) {
   body {
     max-width: 600px;
@@ -534,7 +506,10 @@ button:hover {
   }
 }
 
-/* class: medium */
+/**/
+/*        class: medium */
+/**/
+
 @media screen and (min-width: 601px) and (max-width: 992px) {
   body {
     max-width: 992px
@@ -587,10 +562,6 @@ button:hover {
     width: 30%;
   }
 
-  /* img {
-    width: 47%;
-  } */
-
   form select {
     position: relative;
     margin: 3% 0 0% 0%;
@@ -628,7 +599,6 @@ button:hover {
   }
 
   .image {
-    /* order: 2; */
     width: 100%;
     height: auto;
   }
