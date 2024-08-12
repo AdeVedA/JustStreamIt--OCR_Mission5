@@ -1,10 +1,13 @@
 //url de base de l'API
 const url = "http://localhost:8000/api/v1/titles"
+
 //appel de la fonction qui récupère le film ayant la meilleure note
 getBestFilm()
+
 //récupérer la liste des genres et déterminer les catégories d'affichage fixe
 const genresList = getGenres()
 const fixedCategories = ["", "Mystery", "Adventure", "Fantasy", "Animation", "Thriller"]
+
 //récupérer les films des catégories d'affichage fixe
 for (let i = 0; i < fixedCategories.length; i++) {
     getFilmsCategory(fixedCategories[i]);
@@ -43,6 +46,32 @@ async function getBestFilm() {
     document.querySelector('.film-encart p').style.display = 'none';
 }
 
+// récupérer les noms des genres de film (marge d'extensibilité jusqu'à 1000 genres)
+// et insérer les genres de film dans les listes déroulantes pour les 2 blocs à formulaire
+async function getGenres() {
+    const url = "http://localhost:8000/api/v1/genres?page_size=1000"
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const genresFullList = data.results.map(genre => genre.name);
+        const genresList = genresFullList.filter(genre => !fixedCategories.includes(genre));
+        const selectElements = document.querySelectorAll("select");
+        // pour les 2 balises <select> de sélection de genre cinematographique
+        selectElements.forEach(select => {
+            // pour chaque genre dans la liste de genres, on crée une option pour ce genre
+            genresList.forEach(genre => {
+                const option = document.createElement("option");
+                option.value = genre;
+                option.textContent = genre;
+                select.appendChild(option);
+            });
+        });
+        return genresList        
+    } catch (error) {
+        console.error("Erreur en voulant récupérer la liste de genres:", error);
+    }
+}
+
 //récupérer les films d'une catégorie (genre) de films
 async function getFilmsCategory(category) {
     const box6Uri = "?page_size=6&sort_by=-imdb_score&genre="
@@ -67,6 +96,7 @@ async function getFilmsCategory(category) {
                     this.src = "images/no_cover.png"
                     }
                 maDiv.querySelector("img").src = monFilm.image_url
+                maDiv.querySelector("img").alt = "affiche du film : " + monFilm.title;
                 maDiv.querySelector(".title").textContent = monFilm.title
                 maDiv.querySelector("button").dataset.id = monFilm.id
             } else {
@@ -84,19 +114,6 @@ async function getFilmsCategory(category) {
         console.error("Erreur en voulant récupérer le film:", error);
     }
 }
-
-// écoute de l'évenement de "redimensionnement de la page" pour gérer
-// l'affichage des boutons "voir plus"/"voir moins"
-window.addEventListener('resize', function() {
-    let mesBlocs6 = document.querySelectorAll('section > div.bloc6')
-    mesBlocs6.forEach((monBloc) => {
-        let mesFilms = monBloc.querySelectorAll('[class*="movie"]:not(.display-none)');
-        if (mesFilms.length <= 4) {
-            let maSection = monBloc.closest('section')
-            showVoirPlusOrNot(maSection)
-        }
-    })
-})
 
 // cacher le bouton voir+/voir- 
 // quand le nombre de films récupérés est <= au nombre d'affiches 
@@ -117,61 +134,6 @@ function showVoirPlusOrNot(maSection) {
         } else {
             monBouton.classList.remove("display-none")
         }
-    }
-}
-
-// une fois la page chargée on va écouter les changements de sélection
-// des options de genres dans le menu déroulant
-document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionnez toutes les listes déroulantes des genres
-    const genreChoixDeroulant = document.querySelectorAll('.autres-genres');
-    
-    // Écouter l'événement de changement pour chaque liste déroulante
-    genreChoixDeroulant.forEach(select => {
-        select.addEventListener('change', function(event) {
-            const monGenre = event.target.value;
-            const section = event.target.closest('section');
-            const mesDivs = section.querySelectorAll('[class*=movie]');
-            // Mettre à jour les ids des divs
-            mesDivs.forEach((div) => {
-                // Supprimer la classe movie* existante
-                div.classList.forEach(className => {
-                    if (className.startsWith('movie')) {
-                        div.classList.remove(className);
-                    }
-                });
-                // Ajouter la nouvelle classe
-                div.classList.add(`movie${monGenre}`);
-            });
-            // Appelle la fonction pour obtenir des films par la catégorie sélectionnée
-            getFilmsCategory(monGenre);
-        });
-    });
-});
-
-// récupérer les noms des genres de film (marge d'extensibilité jusqu'à 1000 genres)
-// et insérer les genres de film dans les listes déroulantes pour les 2 blocs à formulaire
-async function getGenres() {
-    const url = "http://localhost:8000/api/v1/genres?page_size=1000"
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const genresFullList = data.results.map(genre => genre.name);
-        const genresList = genresFullList.filter(genre => !fixedCategories.includes(genre));
-        const selectElements = document.querySelectorAll("select");
-        // pour les 2 balises <select> de sélection de genre cinematographique
-        selectElements.forEach(select => {
-            // pour chaque genre dans la liste de genres, on crée une option pour ce genre
-            genresList.forEach(genre => {
-                const option = document.createElement("option");
-                option.value = genre;
-                option.textContent = genre;
-                select.appendChild(option);
-            });
-        });
-        return genresList        
-    } catch (error) {
-        console.error("Erreur en voulant récupérer la liste de genres:", error);
     }
 }
 
@@ -201,5 +163,47 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.classList.add("voirplus");
             }
         }
+    });
+});
+
+// écoute de l'évenement de "redimensionnement de la page" pour gérer
+// l'affichage des boutons "voir plus"/"voir moins"
+window.addEventListener('resize', function() {
+    let mesBlocs6 = document.querySelectorAll('section > div.bloc6')
+    mesBlocs6.forEach((monBloc) => {
+        let mesFilms = monBloc.querySelectorAll('[class*="movie"]:not(.display-none)');
+        if (mesFilms.length <= 4) {
+            let maSection = monBloc.closest('section')
+            showVoirPlusOrNot(maSection)
+        }
+    })
+})
+
+// une fois la page chargée on va écouter les changements de sélection
+// des options de genres dans le menu déroulant
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionnez toutes les listes déroulantes des genres
+    const genreChoixDeroulant = document.querySelectorAll('.autres-genres');
+    
+    // Écouter l'événement de changement pour chaque liste déroulante
+    genreChoixDeroulant.forEach(select => {
+        select.addEventListener('change', function(event) {
+            const monGenre = event.target.value;
+            const section = event.target.closest('section');
+            const mesDivs = section.querySelectorAll('[class*=movie]');
+            // Mettre à jour les ids des divs
+            mesDivs.forEach((div) => {
+                // Supprimer la classe movie* existante
+                div.classList.forEach(className => {
+                    if (className.startsWith('movie')) {
+                        div.classList.remove(className);
+                    }
+                });
+                // Ajouter la nouvelle classe
+                div.classList.add(`movie${monGenre}`);
+            });
+            // Appelle la fonction pour obtenir des films par la catégorie sélectionnée
+            getFilmsCategory(monGenre);
+        });
     });
 });

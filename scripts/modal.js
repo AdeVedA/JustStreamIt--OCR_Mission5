@@ -44,7 +44,7 @@ async function getFilmDetails(idFilm) {
         const response = await fetch(urlFilm);
         const data = await response.json();
         // mettre à jour la fenêtre modale avec les infos du film
-        titreFilm.textContent = data.title;
+        titreFilm.textContent = data.title
         anneeGenresFilm.textContent = data.year +' - '+ data.genres;
         pgDureeFilm.textContent = data.rated +' - '+ data.duration +' minutes '+'('+data.countries+')';
         if (data.worldwide_gross_income === null) {
@@ -54,6 +54,7 @@ async function getFilmDetails(idFilm) {
         }
         imdbScoreFilm.textContent = 'IMDB score: '+ data.imdb_score +" / 10";
         realFilm.textContent = data.directors;
+        coverFilm.alt = "affiche du film :" + data.title;
         if (data.image_url === null) {
             coverFilm.src = "images/no_cover.png"
         } else {
